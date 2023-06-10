@@ -18,6 +18,9 @@ Develop a function or mechanism to identify and extract URLs from the given SMS 
 ## Step 2: VirusTotal API Integration
 Write a function that uses the VirusTotal API to check whether a given URL is malicious. The function should input a URL and output a boolean value (True for malicious, False for safe).
 
+API reference:
+https://developers.virustotal.com/reference/scan-url
+
 ## Step 3: ChatGPT API Integration
 Set up a method to connect and interact with the ChatGPT API. The function should generate a prompt based on the input SMS text and call the ChatGPT API to get a response.
 
