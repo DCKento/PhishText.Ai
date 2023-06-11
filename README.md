@@ -51,10 +51,9 @@ This allows for the entire SMS message to be passed as an argument, with the URL
 ## Step 3: ChatGPT API Integration
 Set up a method to connect and interact with the ChatGPT API. The function should generate a prompt based on the input SMS text and call the ChatGPT API to get a response.
 
-## Step 4: Response Analysis
-Develop a function to interpret the response from the GPT API. Since GPT returns a text response,  define some rules or use text analysis techniques to determine whether it's indicating the message could be phishing. Alternatively, include in the ChatGPT response for it to return a clear string value (True or False) to use as the response indicator.
+## Step 4: Response Analysis and Phishing Detection Function
+Develop a function to interpret the response from the GPT API. Since GPT returns a text response,  define some rules or use text analysis techniques to determine whether it's indicating the message could be phishing. Alternatively, include in the ChatGPT response for it to return a clear string value (True or False) to use as the response indicator. ChatGPT output could even directly specify whether the SMS is phishing or not, through its analysis of the text and VirusTotal output.
 
-## Step 5: Phishing Detection Function
 Combine all the above steps into a main function `is_phishing_sms()`. This function will extract URLs from the input SMS text, check each URL with VirusTotal, call the GPT API to analyze the text, and return True if either the URLs are found to be malicious or the GPT API suggests that the SMS text appears to be phishing.
 
 ## Step 6: Testing
