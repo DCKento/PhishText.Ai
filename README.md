@@ -23,14 +23,18 @@ https://developers.virustotal.com/reference/scan-url
 
 Example input:
 
+```
 python .\vturlchecker.py https://web.nz-t.cyou/
+```
 
 Example output:
 
+```
 Times submitted: 4
 Last analysis stats: {'harmless': 66, 'malicious': 5, 'suspicious': 1, 'undetected': 17, 'timeout': 0}
 Reputation: 0
 Categories: {'Forcepoint ThreatSeeker': 'newly registered websites', 'Webroot': 'Phishing and Other Frauds', 'alphaMountain.ai': 'Suspicious (alphaMountain.ai)'}
+```
 
 ![image](https://github.com/DCKento/PhishText.AI/assets/20635370/0b6ac1fe-833f-4ef7-9334-7ad3e3f17cd8)
 
