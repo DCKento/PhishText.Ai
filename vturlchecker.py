@@ -27,6 +27,8 @@ def main():
         # Print the number of times the URL was submitted and the last analysis stats
         print(f"Times submitted: {url.times_submitted}")
         print(f"Last analysis stats: {url.last_analysis_stats}")
+        print(f"Reputation: {url.reputation}")
+        print(f"Categories: {url.categories}")
 
     finally:
         # Close the client
