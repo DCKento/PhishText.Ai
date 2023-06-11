@@ -21,6 +21,10 @@ Write a function that uses the VirusTotal API to check whether a given URL is ma
 API reference:
 https://developers.virustotal.com/reference/scan-url
 
+vt-py python module reference:
+https://virustotal.github.io/vt-py/quickstart.html
+https://github.com/VirusTotal/vt-py
+
 Example input:
 
 ```
