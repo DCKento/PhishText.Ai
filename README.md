@@ -38,6 +38,11 @@ Categories: {'Forcepoint ThreatSeeker': 'newly registered websites', 'Webroot': 
 
 ![image](https://github.com/DCKento/PhishText.AI/assets/20635370/0b6ac1fe-833f-4ef7-9334-7ad3e3f17cd8)
 
+Together with URL extraction from step 1:
+
+![image](https://github.com/DCKento/PhishText.AI/assets/20635370/54a5af24-7dd0-474e-add7-5bc21d8cfb89)
+
+This allows for the entire SMS message to be passed as an argument, with the URL being extracted and analyzed via the VirusTotal API.
 
 ## Step 3: ChatGPT API Integration
 Set up a method to connect and interact with the ChatGPT API. The function should generate a prompt based on the input SMS text and call the ChatGPT API to get a response.
