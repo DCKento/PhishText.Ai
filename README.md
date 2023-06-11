@@ -16,10 +16,24 @@ By using these methods, PhishText.AI can provide an indication if an SMS might b
 Develop a function or mechanism to identify and extract URLs from the given SMS text. Use regular expressions or libraries like `urllib` in Python to achieve this.
 
 ## Step 2: VirusTotal API Integration
-Write a function that uses the VirusTotal API to check whether a given URL is malicious. The function should input a URL and output a boolean value (True for malicious, False for safe).
+Write a function that uses the VirusTotal API to check whether a given URL is malicious. The function should input a URL and output a response that contains details of the analysis performed.
 
 API reference:
 https://developers.virustotal.com/reference/scan-url
+
+Example input:
+
+python .\vturlchecker.py https://web.nz-t.cyou/
+
+Example output:
+
+Times submitted: 4
+Last analysis stats: {'harmless': 66, 'malicious': 5, 'suspicious': 1, 'undetected': 17, 'timeout': 0}
+Reputation: 0
+Categories: {'Forcepoint ThreatSeeker': 'newly registered websites', 'Webroot': 'Phishing and Other Frauds', 'alphaMountain.ai': 'Suspicious (alphaMountain.ai)'}
+
+![image](https://github.com/DCKento/PhishText.AI/assets/20635370/0b6ac1fe-833f-4ef7-9334-7ad3e3f17cd8)
+
 
 ## Step 3: ChatGPT API Integration
 Set up a method to connect and interact with the ChatGPT API. The function should generate a prompt based on the input SMS text and call the ChatGPT API to get a response.
