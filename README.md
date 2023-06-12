@@ -1,21 +1,31 @@
-# PhishText.AI - SMS Phishing Analysis using OpenAI and VirusTotal
+# PhishText.Ai - SMS Phishing Analysis using OpenAI and VirusTotal
 
-PhishText.AI is a tool built in Python that aims to identify potential phishing attempts in SMS messages. It uses a combination of AI language evaluation and web security checks to evaluate the contents and URLs in a SMS message to determine if the SMS is a phishing attempt.
+PhishText.Ai is a tool built in Python that aims to identify potential phishing attempts in SMS messages. It uses a combination of AI language evaluation and web security checks to evaluate the contents and URLs in a SMS message to determine if the SMS is a phishing attempt.
 
 The tool uses two main steps to analyze SMS messages:
 
 1. URL Check: The tool first looks for any URLs in the SMS. If a URL is found, it is extracted and annalyzed using the VirusTotal API, which can provide various indicators to help determine if the URL is known to be unsafe.
 2. Text Analysis: The tool uses the ChatGPT API from OpenAI to analyze the overall text of the SMS and the analysis output from VirusTotal. ChatGPT will then provide a final analysis on whether the SMS could be a phishing attempt.
 
-By using these methods, PhishText.AI can provide an indication if an SMS might be a phishing attempt. This can help users avoid falling for scams that might lead to them giving away personal information. The tool is intended as a practical demonstration of how AI can be used to improve security.
+By using these methods, PhishText.Ai can provide an indication if an SMS might be a phishing attempt. This can help users avoid falling for scams that might lead to them giving away personal information. The tool is intended as a practical demonstration of how AI can be used to improve security.
 
 ![image](https://github.com/DCKento/PhishText.AI/assets/20635370/c0ca3f18-9123-48f8-b9af-bf118b7eacb5)
 
-# Implementation Details
+# Usage
 
 ## Command Line Interface
 
 The program accepts an SMS message as a command-line argument. This design makes the program flexible and easy to integrate with other systems. Future releases will develop a web-interface where SMS messages can be copy and pasted for more convenient analysis.
+
+To use PhishText.Ai, run the program with the following command:
+
+```
+python .\phishtextAI.py <SMS Message for analysis>
+```
+
+Feel free to copy and paste the SMS message exactly as it was received, including the URL component, as this will be automatically extracted during processing for further analysis.
+
+# Implementation Details
 
 ## URL Extraction
 Uses regular expressions to identify and extract URLs from the given SMS text.
@@ -27,7 +37,7 @@ re.findall('http[s]?://(?:[a-zA-Z]|[0-9]|[$-_@.&+]|[!*\\(\\),]|(?:%[0-9a-fA-F][0
 ```
 
 ## VirusTotal API Integration and Analysis
-Phistext.AI uses the VirusTotal API to check whether an extracted URL is malicious. The function inputs a URL and outputs a response that contains details of the analysis performed.
+PhishText.Ai uses the VirusTotal API to check whether an extracted URL is malicious. The function inputs a URL and outputs a response that contains details of the analysis performed.
 
 API reference:
 https://developers.virustotal.com/reference/scan-url
@@ -65,7 +75,7 @@ Using the OpenAI Python module and OpenAI API, Phishtext.AI connects and interac
 ## Response Analysis and Phishing Detection Function
 Phishtext.AI then uses the OpenAI GPT-3.5-turbo model to provide a human-like assessment of whether the SMS might be a phishing attempt. It takes the SMS text and VirusTotal analysis result as input, and asks the model to provide an analysis. Since ChatGPT returns a text response, the ChatGPT output can directly specify whether the SMS is phishing or not through its analysis of the text and VirusTotal output.
 
-With the above steps combined, Phishtext.AI will: 
+With the above steps combined, PhishText.Ai will: 
 
 * extract URLs from the input SMS text
 * check each URL with VirusTotal
@@ -102,14 +112,14 @@ After the initial testing, continue to iterate and improve the program based on 
 
 # Prerequisites and Dependencies
 
-Phishtext.AI requires the following Python libraries:
+PhishText.Ai requires the following Python libraries:
 * argparse
 * re
 * urllib.parse
 * vt
 * openai
 
-Phishtext.AI requires the following API keys:
+PhishText.Ai requires the following API keys:
 * VirusTotal API key: https://support.virustotal.com/hc/en-us/articles/115002088769-Please-give-me-an-API-key
 * OpenAI API key: https://help.openai.com/en/articles/4936850-where-do-i-find-my-secret-api-key
 
@@ -119,7 +129,7 @@ Be mindful of rate limits and charges that may apply to the use of these API's.
 
 * The accuracy of the solution depends on the effectiveness of the GPT-3.5-turbo model in detecting phishing attempts and the reliability of the VirusTotal API.
 * Overuse may result in hitting rate limits or large financial charge for both OpenAI and VirusTotal APIs.
-* Phishtext.AI may not correctly interpret URLs that do not match the regular expression used for URL extraction.
+* PhishText.Ai may not correctly interpret URLs that do not match the regular expression used for URL extraction.
 * The model can potentially output false positives or negatives.
 * The OpenAI API key and the VirusTotal API key are hardcoded, posing a potential security risk if the code is publicly exposed.
 
