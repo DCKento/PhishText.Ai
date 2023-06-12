@@ -102,6 +102,13 @@ Therefore, it is highly recommended not to click on the link provided in the mes
 
 ![image](https://github.com/DCKento/PhishText.AI/assets/20635370/44f7260b-3242-416e-a514-d2727b164ad6)
 
+Prompt submitted to ChatGPT:
+
+```
+{"role": "system", "content": "You are an intelligent assistant that specializes in cybersecurity and the identification and analysis of phishing SMS messages."},
+{"role": "user", "content": f"Analyze this SMS message: '{sms_text}' and its VirusTotal analysis: '{analysis_result}' to determine if this is a phishing attempt. Give your reasoning for why this is or is not a phishing SMS"},
+```
+
 ChatGPT is able to analyze the language used in the SMS message, the URL itself with the added context from the VirusTotal analysis to determine that the SMS is a phishing attempt. ChatGPT is even able to provide some recommendations for next steps and safeguarding techniques.
 
 ## Future Steps: Further Testing
