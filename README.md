@@ -54,7 +54,28 @@ Set up a method to connect and interact with the ChatGPT API. The function shoul
 ## Step 4: Response Analysis and Phishing Detection Function
 Develop a function to interpret the response from the GPT API. Since GPT returns a text response,  define some rules or use text analysis techniques to determine whether it's indicating the message could be phishing. Alternatively, include in the ChatGPT response for it to return a clear string value (True or False) to use as the response indicator. ChatGPT output could even directly specify whether the SMS is phishing or not, through its analysis of the text and VirusTotal output.
 
-Combine all the above steps into a main function `is_phishing_sms()`. This function will extract URLs from the input SMS text, check each URL with VirusTotal, call the GPT API to analyze the text, and return True if either the URLs are found to be malicious or the GPT API suggests that the SMS text appears to be phishing.
+Combine all the above steps into the Python program which will extract URLs from the input SMS text, check each URL with VirusTotal, call the GPT API to analyze the text, and return output that will suggest whether or not the SMS text appears to be phishing.
+
+Example input:
+
+```
+python .\phishtextai.py "NZTA-Your tolls are not yet paid and are about to be overdue.please click to view and pay: https://web.nz-t.cyou"
+```
+
+Example output:
+
+```
+Based on the given SMS message and the VirusTotal analysis, it is highly likely that this is a phishing attempt.
+
+The SMS message is designed to create a sense of urgency and fear by indicating that the recipient's tolls are about to be overdue. It requests the recipient to click on a link to view and pay their tolls. However, the link provided in the message directs to a suspicious domain "https://web.nz-t.cyou" which is not a legitimate domain for the New Zealand Transport Agency (NZTA).
+
+The VirusTotal analysis also indicates that the URL has been submitted eight times and flagged as "malicious" and "phishing and fraud" by Sophos and "Phishing and Other Frauds" by Webroot. The URL has also been categorized as a "newly registered website" by Forcepoint ThreatSeeker and as "Suspicious" by alphaMountain.ai.
+
+Therefore, it is highly recommended not to click on the link provided in the message and to delete it immediately to avoid any potential phishing attacks or scams. It is always safer to directly visit the legitimate website or call the official customer support number to inquire about the status of your tolls.
+```
+
+![image](https://github.com/DCKento/PhishText.AI/assets/20635370/44f7260b-3242-416e-a514-d2727b164ad6)
+
 
 ## Step 6: Testing
 Test the function with a variety of SMS messages, both phishing and non-phishing. Use these tests to debug and improve the function. Also, consider edge cases or uncommon scenarios and see how the function handles them.
