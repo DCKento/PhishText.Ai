@@ -9,6 +9,8 @@ The tool uses two main steps to analyze SMS messages:
 
 By using these methods, PhishText.AI can provide an indication if an SMS might be a phishing attempt. This can help users avoid falling for scams that might lead to them giving away personal information. The tool is intended as a practical demonstration of how AI can be used to improve security.
 
+![image](https://github.com/DCKento/PhishText.AI/assets/20635370/c0ca3f18-9123-48f8-b9af-bf118b7eacb5)
+
 # Implementation Details
 
 ## Command Line Interface
