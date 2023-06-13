@@ -4,7 +4,7 @@ PhishText.Ai is a tool built in Python that aims to identify potential phishing 
 
 The tool uses two main steps to analyze SMS messages:
 
-1. URL Check: The tool first looks for any URLs in the SMS. If a URL is found, it is extracted and annalyzed using the VirusTotal API, which can provide various indicators to help determine if the URL is known to be unsafe.
+1. URL Check: The tool first looks for any URLs in the SMS. If a URL is found, it is extracted and analyzed using the VirusTotal API, which can provide various indicators to help determine if the URL is known to be unsafe.
 2. Text Analysis: The tool uses the ChatGPT API from OpenAI to analyze the overall text of the SMS and the analysis output from VirusTotal. ChatGPT will then provide a final analysis on whether the SMS could be a phishing attempt.
 
 By using these methods, PhishText.Ai can provide an indication if an SMS might be a phishing attempt. This can help users avoid falling for scams that might lead to them giving away personal information. The tool is intended as a practical demonstration of how AI can be used to improve security.
