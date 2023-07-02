@@ -6,6 +6,7 @@ import time
 import openai  # Import the OpenAI module
 import requests
 import json
+from flask import Flask, request, render_template
 
 # Function to extract URLs from the SMS message. Uses regex and returns the URL
 def extract_url(sms_text):
@@ -52,7 +53,7 @@ def get_scan_results(api_key, scan_id):
 
 # Function to chat with the GPT-3.5-turbo model
 def chat_with_gpt(sms_text, vt_analysis_result, urlscan_analysis_result):
-    openai.api_key = 'OPEN_AI_KEY_HERE'
+    openai.api_key = 'OPENAI_API_KEY_HERE'
     messages = [
         {"role": "system", "content": "You are an intelligent assistant that specializes in cybersecurity and the identification and analysis of phishing SMS messages."},
         {"role": "user", "content": f"Analyze this SMS message: '{sms_text}' and its VirusTotal analysis: '{vt_analysis_result}' and URLScan.io analysis: '{urlscan_analysis_result}' to determine if this is a phishing attempt. Give your reasoning for why this is or is not a phishing SMS"},
@@ -64,26 +65,39 @@ def chat_with_gpt(sms_text, vt_analysis_result, urlscan_analysis_result):
     # Return the assistant's reply
     return response['choices'][0]['message']['content']
 
-# Main function. Parses the argumennts, creates a VT client and loops through the URL's.
-def main():
-    parser = argparse.ArgumentParser(description='Analyze URLs in a SMS message using VirusTotal.')
-    parser.add_argument('sms', help='The SMS message text.')
-    args = parser.parse_args()
-
+# Main function. Parses the arguments, creates a VT client and loops through the URL's.
+def main(sms):
     client = vt.Client("VIRUSTOTAL_API_KEY_HERE")
-    urls = extract_url(args.sms)
+    urls = extract_url(sms)
 
+    results = []
     for url in urls:
         vt_analysis_result = analyze_url(url, client)
-        urlscan_api_key = "URL_SCAN_API_KEY_HERE"
+        urlscan_api_key = "URLSCAN_API_KEY_HERE"
         scan_id = submit_scan(urlscan_api_key, url)
         urlscan_analysis_result = None
         if scan_id:
             urlscan_analysis_result = get_scan_results(urlscan_api_key, scan_id)
-        chat_gpt_result = chat_with_gpt(args.sms, vt_analysis_result, urlscan_analysis_result)
-        print(chat_gpt_result)
+        chat_gpt_result = chat_with_gpt(sms, vt_analysis_result, urlscan_analysis_result)
+        results.append(chat_gpt_result)
 
     client.close()
 
+    return results
+
+# Create the Flask application
+app = Flask(__name__)
+
+@app.route('/', methods=['GET', 'POST'])
+def home():
+    if request.method == 'POST':
+        sms_text = request.form.get('sms')
+        # Run your main function with the sms_text
+        results = main(sms_text)
+        # Convert the list of results into a string so it can be displayed in the HTML
+        results_str = "\n".join(results)
+        return render_template('results.html', results=results_str)
+    return render_template('index.html')
+
 if __name__ == "__main__":
-    main()
+    app.run(debug=True)
