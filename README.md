@@ -4,7 +4,7 @@ PhishText.Ai is a tool built in Python that aims to identify potential phishing 
 
 The tool uses two main steps to analyze SMS messages:
 
-1. URL Check: The tool first looks for any URLs in the SMS. If a URL is found, it is extracted and analyzed using the VirusTotal API, which can provide various indicators to help determine if the URL is known to be unsafe.
+1. URL Check: The tool first looks for any URLs in the SMS. If a URL is found, it is extracted and analyzed using the VirusTotal and UrlScan.io API's, which can provide various indicators to help determine if the URL is known to be unsafe.
 2. Text Analysis: The tool uses the ChatGPT API from OpenAI to analyze the overall text of the SMS and the analysis output from VirusTotal. ChatGPT will then provide a final analysis on whether the SMS could be a phishing attempt.
 
 By using these methods, PhishText.Ai can provide an indication if an SMS might be a phishing attempt. This can help users avoid falling for scams that might lead to them giving away personal information. The tool is intended as a practical demonstration of how AI can be used to improve security.
@@ -68,6 +68,12 @@ Together with URL extraction from step 1:
 ![image](https://github.com/DCKento/PhishText.AI/assets/20635370/54a5af24-7dd0-474e-add7-5bc21d8cfb89)
 
 This allows for the entire SMS message to be passed as an argument, with the URL being extracted and analyzed via the VirusTotal API. Once completed, it retrieves the URL's details such as submission times, last analysis stats, reputation, and categories from VirusTotal.
+
+## URLScan.io API Integration and Analysis
+Phishtext.Ai also uses the URLScan.io API for further URL analaysis before passing the results and SMS message to ChatGPT. The function operates in a similar manner to the VirusTotal equivalent, and is intended as a secondary sort of indicators to further enhance the analysis made by ChatGPT.
+
+API reference:
+https://urlscan.io/docs/api/
 
 ## ChatGPT API Integration
 Using the OpenAI Python module and OpenAI API, Phishtext.AI connects and interacts with ChatGPT. The function generates a prompt based on the input SMS text along with the VirusTotal analysis and calls the ChatGPT API to get a response.
