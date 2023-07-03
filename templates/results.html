@@ -1,12 +1,24 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>SMS Phishing Analysis Results</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/5.0.0-beta1/css/bootstrap.min.css" rel="stylesheet">
+</head>
 <body>
-
-<h2>Analysis Results</h2>
-
-<p>{{ results }}</p>
-
-<a href="/">Back</a>
-
+<div class="container py-5">
+    <h1 class="text-center mb-4">Analysis Results</h1>
+    <div class="row justify-content-center">
+        <div class="col-lg-8">
+            <div class="mb-3">
+                <label for="result" class="form-label">GPT-3.5 Analysis</label>
+                <textarea class="form-control" id="result" rows="10" readonly>{{ gpt_result }}</textarea>
+            </div>
+            <a href="/" class="btn btn-primary">Back</a>
+        </div>
+    </div>
+</div>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/5.0.0-beta1/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
