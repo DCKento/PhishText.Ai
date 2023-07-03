@@ -1,14 +1,26 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>SMS Phishing Analysis</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/5.0.0-beta1/css/bootstrap.min.css" rel="stylesheet">
+</head>
 <body>
-
-<h2>Analyze SMS for phishing attempts</h2>
-
-<form action="/" method="post">
-  <label for="sms">Enter SMS text:</label><br>
-  <textarea id="sms" name="sms" rows="4" cols="50"></textarea><br>
-  <input type="submit" value="Submit">
-</form> 
-
+<div class="container py-5">
+    <h1 class="text-center mb-4">SMS Phishing Analysis</h1>
+    <div class="row justify-content-center">
+        <div class="col-lg-6">
+            <form action="/analyze" method="post">
+                <div class="mb-3">
+                    <label for="sms" class="form-label">SMS Message</label>
+                    <textarea class="form-control" id="sms" name="sms" rows="3" required></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary">Analyze</button>
+            </form>
+        </div>
+    </div>
+</div>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/5.0.0-beta1/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
