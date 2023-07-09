@@ -31,8 +31,17 @@ def get_scan_results(api_key, scan_id):
 
         return response.json()
 
-api_key = "INSERT_API_KEY_HERE"
-url_to_scan = "INSERT_URL_HERE"
+def extract_relevant_data(json_data):
+    # Extract 'verdicts', 'page' and 'lists' from the input JSON data
+    relevant_data = {
+        'verdicts': json_data.get('verdicts', {}),
+        'page': json_data.get('page', {}),
+        'lists': json_data.get('lists', {})
+    }
+    return relevant_data
+
+api_key = "API_KEY_HERE"
+url_to_scan = "URL_TO_SCAN_HERE"
 
 # Submit a new scan
 scan_id = submit_scan(api_key, url_to_scan)
@@ -40,6 +49,11 @@ scan_id = submit_scan(api_key, url_to_scan)
 if scan_id:
     # If the scan was submitted successfully, get the results
     results = get_scan_results(api_key, scan_id)
-    print(results)
+    
+    # Extract the relevant data
+    extracted_data = extract_relevant_data(results)
+    
+    # Print the extracted data
+    print(extracted_data)
 else:
     print("Failed to submit scan.")
