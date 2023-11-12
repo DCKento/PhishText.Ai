@@ -75,6 +75,12 @@ Phishtext.Ai also uses the URLScan.io API for further URL analaysis before passi
 API reference:
 https://urlscan.io/docs/api/
 
+## AlienVault OTX API Integration and Analysis
+Phishtext.Ai checks the URL against the OTX threat intelligence feed for a further indicator. This uses the OTX module in python
+
+API reference:
+[https://urlscan.io/docs/api/](https://github.com/AlienVault-OTX/OTX-Python-SDK)
+
 ## ChatGPT API Integration
 Using the OpenAI Python module and OpenAI API, Phishtext.AI connects and interacts with ChatGPT. The function generates a prompt based on the input SMS text along with the VirusTotal analysis and calls the ChatGPT API to get a response.
 
